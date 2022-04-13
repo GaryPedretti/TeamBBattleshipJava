@@ -173,20 +173,20 @@ public class Main {
     }
 
     public static void printMiss() {
-        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⡁⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⢀⣼⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣷⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢰⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⠋⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⣼⣿⣿⣿⠟⠉⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣷⣾⣿⣿⣿⣿⣯⠙⠛⠿⠿⠿⠿⠿⠛⠁⠀⠀⠀⠀⣿⡿⠋⣁⡀⢸⡿⢿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⡏⢿⣿⣿⡟⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⡇⠀⢠⣾⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⡇⢀⠉⠉⠀⠀⠀⢀⣼⣷⣤⣀⠀⠀⠀⣀⣤⣶⡿⠋⠸⣿⣧⡀⠉⣹⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⠀⠻⣶⣶⣶⣶⣿⠇⠙⢿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠈⠉⠁⣰⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⣧⠀⠈⠙⠛⠋⠁⠀⠀⠀⠉⠛⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⡟⠉⠀⢿⣿⣿⣿⣶⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣾⣿⣿⡿⠂⠉⢻⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣄⠀⠀⠀⠙⠻⠿⢿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⠿⠟⠋⠀⠀⠀⢠⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣷⣦⣤⣀⡀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⢀⣀⣤⣴⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
-        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.WHITE);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⡁⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⢀⣼⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣷⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢰⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⠋⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⣼⣿⣿⣿⠟⠉⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣷⣾⣿⣿⣿⣿⣯⠙⠛⠿⠿⠿⠿⠿⠛⠁⠀⠀⠀⠀⣿⡿⠋⣁⡀⢸⡿⢿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⡏⢿⣿⣿⡟⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⡇⠀⢠⣾⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⡇⢀⠉⠉⠀⠀⠀⢀⣼⣷⣤⣀⠀⠀⠀⣀⣤⣶⡿⠋⠸⣿⣧⡀⠉⣹⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⠀⠻⣶⣶⣶⣶⣿⠇⠙⢿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠈⠉⠁⣰⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣧⠀⠈⠙⠛⠋⠁⠀⠀⠀⠉⠛⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⡟⠉⠀⢿⣿⣿⣿⣶⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣾⣿⣿⡿⠂⠉⢻⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣄⠀⠀⠀⠙⠻⠿⢿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⠿⠟⠋⠀⠀⠀⢠⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣷⣦⣤⣀⡀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⢀⣀⣤⣴⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
     }
 }
