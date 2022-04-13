@@ -2,6 +2,10 @@ package org.scrum.psd.battleship.ascii;
 
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
+
+import com.diogonunes.jcdp.color.api.Ansi.BColor;
+import com.diogonunes.jcdp.color.api.Ansi.FColor;
+
 import org.scrum.psd.battleship.controller.GameController;
 import org.scrum.psd.battleship.controller.dto.Letter;
 import org.scrum.psd.battleship.controller.dto.Position;
@@ -65,15 +69,10 @@ public class Main {
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
             if (isHit) {
                 beep();
-
-                console.println("                \\         .  ./");
-                console.println("              \\      .:\" \";'.:..\" \"   /");
-                console.println("                  (M^^.^~~:.'\" \").");
-                console.println("            -   (/  .    . . \\ \\)  -");
-                console.println("               ((| :. ~ ^  :. .|))");
-                console.println("            -   (\\- |  \\ /  |  /)  -");
-                console.println("                 -\\  \\     /  /-");
-                console.println("                   \\  \\   /  /");
+                // player A red (hit)
+                printHit();
+            } else {
+                printMiss();
             }
 
             console.println(isHit ? "Yeah ! Nice hit !" : "Miss");
@@ -85,15 +84,9 @@ public class Main {
             if (isHit) {
                 beep();
 
-                console.println("                \\         .  ./");
-                console.println("              \\      .:\" \";'.:..\" \"   /");
-                console.println("                  (M^^.^~~:.'\" \").");
-                console.println("            -   (/  .    . . \\ \\)  -");
-                console.println("               ((| :. ~ ^  :. .|))");
-                console.println("            -   (\\- |  \\ /  |  /)  -");
-                console.println("                 -\\  \\     /  /-");
-                console.println("                   \\  \\   /  /");
-
+                printHit();
+            } else {
+                printMiss();
             }
         } while (true);
     }
@@ -166,5 +159,36 @@ public class Main {
 
         enemyFleet.get(4).getPositions().add(new Position(Letter.C, 5));
         enemyFleet.get(4).getPositions().add(new Position(Letter.C, 6));
+    }
+
+    public static void printHit() {
+        console.setForegroundColor(FColor.RED);
+        console.println("hello");
+        console.println("                \\         .  ./", com.diogonunes.jcdp.color.api.Ansi.Attribute.BOLD, FColor.RED, BColor.WHITE);
+        console.println("              \\      .:\" \";'.:..\" \"   /", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+        console.println("                  (M^^.^~~:.'\" \").", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+        console.println("            -   (/  .    . . \\ \\)  -", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+        console.println("               ((| :. ~ ^  :. .|))", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+        console.println("            -   (\\- |  \\ /  |  /)  -", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+        console.println("                 -\\  \\     /  /-", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+        console.println("                   \\  \\   /  /", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
+    }
+
+    public static void printMiss() {
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⡁⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⢀⣼⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣷⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢰⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⠋⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⣼⣿⣿⣿⠟⠉⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣷⣾⣿⣿⣿⣿⣯⠙⠛⠿⠿⠿⠿⠿⠛⠁⠀⠀⠀⠀⣿⡿⠋⣁⡀⢸⡿⢿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⡏⢿⣿⣿⡟⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⡇⠀⢠⣾⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⡇⢀⠉⠉⠀⠀⠀⢀⣼⣷⣤⣀⠀⠀⠀⣀⣤⣶⡿⠋⠸⣿⣧⡀⠉⣹⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⠀⠻⣶⣶⣶⣶⣿⠇⠙⢿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠈⠉⠁⣰⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣧⠀⠈⠙⠛⠋⠁⠀⠀⠀⠉⠛⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⡟⠉⠀⢿⣿⣿⣿⣶⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣾⣿⣿⡿⠂⠉⢻⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣄⠀⠀⠀⠙⠻⠿⢿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⠿⠟⠋⠀⠀⠀⢠⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣷⣦⣤⣀⡀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⢀⣀⣤⣴⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+        console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
     }
 }
