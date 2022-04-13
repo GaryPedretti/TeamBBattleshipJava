@@ -2,7 +2,7 @@ package org.scrum.psd.battleship.ascii;
 
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
-
+import com.diogonunes.jcdp.color.api.Ansi.Attribute;
 import com.diogonunes.jcdp.color.api.Ansi.BColor;
 import com.diogonunes.jcdp.color.api.Ansi.FColor;
 
@@ -38,7 +38,7 @@ public class Main {
         console.println(" __..._____--==/___]_|__|_____________________________[___\\==--____,------' .7");
         console.println("|                               Welcome to Battleship                         BB-61/");
         console.println(" \\_________________________________________________________________________|");
-        console.println("");
+        console.println("=====================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
         console.setForegroundColor(Ansi.FColor.WHITE);
 
         InitializeGame();
@@ -62,7 +62,7 @@ public class Main {
         console.println("    \" \"\" \"\" \"\" \"");
 
         do {
-            console.println("");
+            console.println("=====================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
             console.println("Player, it's your turn");
             console.println("Enter coordinates for your shot :");
             Position position = parsePosition(scanner.next());
@@ -79,7 +79,7 @@ public class Main {
 
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
-            console.println("");
+            console.println("=====================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
             console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
             if (isHit) {
                 beep();
@@ -124,7 +124,7 @@ public class Main {
         console.println("Please position your fleet (Game board has size from A to H and 1 to 8) :");
 
         for (Ship ship : myFleet) {
-            console.println("");
+            console.println("=====================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
             console.println(String.format("Please enter the positions for the %s (size: %s)", ship.getName(), ship.getSize()));
             for (int i = 1; i <= ship.getSize(); i++) {
                 console.println(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()));
@@ -162,9 +162,7 @@ public class Main {
     }
 
     public static void printHit() {
-        console.setForegroundColor(FColor.RED);
-        console.println("hello");
-        console.println("                \\         .  ./", com.diogonunes.jcdp.color.api.Ansi.Attribute.BOLD, FColor.RED, BColor.WHITE);
+        console.println("                \\         .  ./", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
         console.println("              \\      .:\" \";'.:..\" \"   /", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
         console.println("                  (M^^.^~~:.'\" \").", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
         console.println("            -   (/  .    . . \\ \\)  -", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.RED, BColor.WHITE);
