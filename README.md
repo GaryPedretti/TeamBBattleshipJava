@@ -57,3 +57,11 @@ git clone https://github.com/proscrumdev/battleship-java.git  --config core.auto
 ```
 ./gradlew test
 ```
+
+# Latest Changes - Sprint2 increment
+Added red color to hit art message 
+Added splash ASCII art to miss message
+Added blue color to miss message
+Separator text is green
+User messages are magenta
+CPU messages are cyan
