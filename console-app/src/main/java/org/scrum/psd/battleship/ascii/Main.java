@@ -63,8 +63,8 @@ public class Main {
 
         do {
             console.println("===============================================================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
-            console.println("Player, it's your turn");
-            console.println("Enter coordinates for your shot :");
+            printPlayerMessage("Player, it's your turn");
+            printPlayerMessage("Enter coordinates for your shot :");
             Position position = parsePosition(scanner.next());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
             if (isHit) {
@@ -80,7 +80,7 @@ public class Main {
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
             console.println("===============================================================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
-            console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
+            printComputerMessage(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
             if (isHit) {
                 beep();
 
@@ -121,13 +121,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         myFleet = GameController.initializeShips();
 
-        console.println("Please position your fleet (Game board has size from A to H and 1 to 8) :");
+        printPlayerMessage("Please position your fleet (Game board has size from A to H and 1 to 8) :");
 
         for (Ship ship : myFleet) {
             console.println("===============================================================", Attribute.NONE, Ansi.FColor.GREEN, BColor.BLACK);
-            console.println(String.format("Please enter the positions for the %s (size: %s)", ship.getName(), ship.getSize()));
+            printPlayerMessage(String.format("Please enter the positions for the %s (size: %s)", ship.getName(), ship.getSize()));
             for (int i = 1; i <= ship.getSize(); i++) {
-                console.println(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()));
+                printPlayerMessage(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()));
 
                 String positionInput = scanner.next();
                 ship.addPosition(positionInput);
@@ -188,5 +188,13 @@ public class Main {
         console.println("⣿⣄⠀⠀⠀⠙⠻⠿⢿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⠿⠟⠋⠀⠀⠀⢠⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
         console.println("⣿⣿⣷⣦⣤⣀⡀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⢀⣀⣤⣴⣾⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
         console.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿", com.diogonunes.jcdp.color.api.Ansi.Attribute.NONE, FColor.BLUE, BColor.BLACK);
+    }
+
+    public static void printPlayerMessage(String message) {
+        console.println(message, Attribute.NONE, FColor.MAGENTA, BColor.BLACK);
+    }
+
+    public static void printComputerMessage(String message) {
+        console.println(message, Attribute.NONE, FColor.CYAN, BColor.BLACK);
     }
 }
