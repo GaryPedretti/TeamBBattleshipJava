@@ -109,9 +109,29 @@ public class Main {
     }
 
     protected static Position parsePosition(String input) {
-        Letter letter = Letter.valueOf(input.toUpperCase().substring(0, 1));
+        Position position = new Position();
+        // check to see if letter is in bound
+        String inputLetter = new String(input.toUpperCase().substring(0, 1));
+        if (letterContains(inputLetter) == false) {
+           return null;
+        }
+        // check to see if number is in bound
         int number = Integer.parseInt(input.substring(1));
-        return new Position(letter, number);
+        if (number > 8 ||  number < 1) {
+            return null;
+        }
+        position.setColumn(Letter.valueOf(inputLetter));
+        position.setRow(number);
+        return position;
+    }
+
+    protected static boolean letterContains(String input) {
+        for (Letter l : Letter.values()) {
+            if (l.name().equals(input)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Position getRandomPosition() {
