@@ -49,7 +49,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        console.print("\033[2J\033[;H");
         console.println("                  __");
         console.println("                 /  \\");
         console.println("           .-.  |    |");
