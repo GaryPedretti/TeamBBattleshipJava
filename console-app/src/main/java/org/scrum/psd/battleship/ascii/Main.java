@@ -59,9 +59,15 @@ public class Main {
 
         do {
             console.println("");
+            console.setForegroundColor(Ansi.FColor.BLUE);
             console.println("Player, it's your turn");
+            console.println("");
             console.println("Enter coordinates for your shot :");
+            console.println("");
+            console.print("Firing shot to coordinates: ");
+            console.setForegroundColor(Ansi.FColor.YELLOW);
             Position position = parsePosition(scanner.next());
+            console.print("Firing shot to coordinates: " + position.toString());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
             if (isHit) {
                 beep();
@@ -119,7 +125,8 @@ public class Main {
     }
 
     private static void InitializeGame() {
-        InitializeMyFleet();
+        //InitializeMyFleet();
+        DebugInitializeMyFleet();
 
         InitializeEnemyFleet();
     }
@@ -141,6 +148,34 @@ public class Main {
             }
         }
     }
+
+    private static void DebugInitializeMyFleet() {
+        myFleet = GameController.initializeShips();
+
+        myFleet.get(0).getPositions().add(new Position(Letter.H, 1));
+        myFleet.get(0).getPositions().add(new Position(Letter.H, 2));
+        myFleet.get(0).getPositions().add(new Position(Letter.H, 3));
+        myFleet.get(0).getPositions().add(new Position(Letter.H, 4));
+        myFleet.get(0).getPositions().add(new Position(Letter.H, 5));
+
+        myFleet.get(1).getPositions().add(new Position(Letter.C, 2));
+        myFleet.get(1).getPositions().add(new Position(Letter.C, 3));
+        myFleet.get(1).getPositions().add(new Position(Letter.C, 4));
+        myFleet.get(1).getPositions().add(new Position(Letter.C, 5));
+
+        myFleet.get(2).getPositions().add(new Position(Letter.F, 3));
+        myFleet.get(2).getPositions().add(new Position(Letter.G, 3));
+        myFleet.get(2).getPositions().add(new Position(Letter.H, 3));
+
+        myFleet.get(3).getPositions().add(new Position(Letter.B, 4));
+        myFleet.get(3).getPositions().add(new Position(Letter.C, 4));
+        myFleet.get(3).getPositions().add(new Position(Letter.D, 4));
+
+        myFleet.get(4).getPositions().add(new Position(Letter.A, 5));
+        myFleet.get(4).getPositions().add(new Position(Letter.A, 6));
+    }
+
+
 
     private static void InitializeEnemyFleet() {
         enemyFleet = GameController.initializeShips();
