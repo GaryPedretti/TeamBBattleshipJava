@@ -73,6 +73,9 @@ public class Main {
                 console.print("Firing shot to coordinates: ");
                 enteredCoordinates = scanner.next();
                 validCoordinates = checkCoordinates(enteredCoordinates);
+                if (validCoordinates == false) {
+                    console.println("Coordinatates entered are not valid, please try again.");
+                }
             } while (validCoordinates == false);
             Position position = parsePosition(enteredCoordinates);
             console.println("Firing shot to coordinates: " + position.getColumn() + position.getRow());
@@ -132,24 +135,16 @@ public class Main {
     }
 
     protected static Boolean checkCoordinates(String enteredCoordinates){
+        String strLetter = enteredCoordinates.toUpperCase().substring(0, 1);
+        if (letterContains(strLetter) == false) { return false; }
+        int number = Integer.parseInt(enteredCoordinates.substring(1));
+        if (number < 1 || number > 8) { return false; }
         return true;
     }
-
     protected static Position parsePosition(String input) {
-        Position position = new Position();
-        // check to see if letter is in bound
-        String inputLetter = new String(input.toUpperCase().substring(0, 1));
-        if (letterContains(inputLetter) == false) {
-           return null;
-        }
-        // check to see if number is in bound
+        Letter letter = Letter.valueOf(input.toUpperCase().substring(0, 1));
         int number = Integer.parseInt(input.substring(1));
-        if (number > 8 ||  number < 1) {
-            return null;
-        }
-        position.setColumn(Letter.valueOf(inputLetter));
-        position.setRow(number);
-        return position;
+        return new Position(letter, number);
     }
 
     protected static boolean letterContains(String input) {
