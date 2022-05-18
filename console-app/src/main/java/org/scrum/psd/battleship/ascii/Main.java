@@ -2,6 +2,8 @@ package org.scrum.psd.battleship.ascii;
 
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
+import com.diogonunes.jcdp.color.api.Ansi.BColor;
+
 import org.scrum.psd.battleship.controller.GameController;
 import org.scrum.psd.battleship.controller.dto.Letter;
 import org.scrum.psd.battleship.controller.dto.Position;
@@ -43,9 +45,10 @@ public class Main {
     }
 
     private static void StartGame() {
+        console.setBackgroundColor(BColor.BLACK);
+
         Scanner scanner = new Scanner(System.in);
 
-        console.print("\033[2J\033[;H");
         console.println("                  __");
         console.println("                 /  \\");
         console.println("           .-.  |    |");
@@ -59,19 +62,18 @@ public class Main {
 
         do {
             console.println("");
-            console.setForegroundColor(Ansi.FColor.BLUE);
+            console.setForegroundColor(Ansi.FColor.CYAN);
             console.println("Player, it's your turn");
             console.println("");
             console.println("Enter coordinates for your shot :");
             console.println("");
             console.print("Firing shot to coordinates: ");
-            console.setForegroundColor(Ansi.FColor.YELLOW);
             Position position = parsePosition(scanner.next());
-            console.print("Firing shot to coordinates: " + position.toString());
+            console.println("Firing shot to coordinates: " + position.getColumn() + position.getRow());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
+            console.println("\t");
             if (isHit) {
                 beep();
-
                 console.println("                \\         .  ./");
                 console.println("              \\      .:\" \";'.:..\" \"   /");
                 console.println("                  (M^^.^~~:.'\" \").");
@@ -80,14 +82,26 @@ public class Main {
                 console.println("            -   (\\- |  \\ /  |  /)  -");
                 console.println("                 -\\  \\     /  /-");
                 console.println("                   \\  \\   /  /");
+                console.println("");
+                console.setForegroundColor(Ansi.FColor.GREEN);
+                console.println("Yeah ! Nice hit !");
+                console.println("");
+            }
+            else {
+                console.setForegroundColor(Ansi.FColor.RED);
+                console.println("Miss !");
+                console.println("");
             }
 
-            console.println(isHit ? "Yeah ! Nice hit !" : "Miss");
+            console.println("\t");
+            console.println("\t");
 
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
-            console.println("");
+            console.println("\t");
+            console.setForegroundColor(Ansi.FColor.MAGENTA);
             console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
+            console.println("");
             if (isHit) {
                 beep();
 
@@ -101,6 +115,9 @@ public class Main {
                 console.println("                   \\  \\   /  /");
 
             }
+            console.println("\t");
+            console.println("\t");
+            console.println("\t");
         } while (true);
     }
 
@@ -145,8 +162,8 @@ public class Main {
     }
 
     private static void InitializeGame() {
-        //InitializeMyFleet();
-        DebugInitializeMyFleet();
+        InitializeMyFleet();
+        // DebugInitializeMyFleet();
 
         InitializeEnemyFleet();
     }
@@ -155,14 +172,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         myFleet = GameController.initializeShips();
 
-        console.println("Please position your fleet (Game board has size from A to H and 1 to 8) :");
+        console.print("Please position your fleet (Game board has size from A to H and 1 to 8) :");
 
         for (Ship ship : myFleet) {
-            console.println("");
+            console.println("\t");
             console.println(String.format("Please enter the positions for the %s (size: %s)", ship.getName(), ship.getSize()));
             for (int i = 1; i <= ship.getSize(); i++) {
-                console.println(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()));
-
+                console.print(String.format("Enter position %s of %s (i.e A3) : ", i, ship.getSize()));
                 String positionInput = scanner.next();
                 ship.addPosition(positionInput);
             }

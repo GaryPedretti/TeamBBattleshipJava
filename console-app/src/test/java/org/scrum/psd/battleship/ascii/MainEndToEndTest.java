@@ -39,4 +39,41 @@ public class MainEndToEndTest {
             Assert.assertTrue(systemOutRule.getLog().contains("Miss"));
         }
     }
+
+    @Test
+    public void testPlayGameShotOutOfBoundsX() {
+        try {
+            gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2", "m4");
+
+            Main.main(new String[]{});
+        } catch(NoSuchElementException e) {
+            Assert.assertTrue(systemOutRule.getLog().contains("Welcome to Battleship"));
+            Assert.assertTrue(systemOutRule.getLog().contains("Error"));
+        }
+    }
+
+    @Test
+    public void testPlayGameShotOutOfBoundsY() {
+        try {
+            gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2", "b14");
+
+            Main.main(new String[]{});
+        } catch(NoSuchElementException e) {
+            Assert.assertTrue(systemOutRule.getLog().contains("Welcome to Battleship"));
+            Assert.assertTrue(systemOutRule.getLog().contains("Error"));
+        }
+    }
+
+    @Test
+    public void testPlayGameShotInvalid() {
+        try {
+            gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2", "abc");
+
+            Main.main(new String[]{});
+        } catch(NoSuchElementException e) {
+            Assert.assertTrue(systemOutRule.getLog().contains("Welcome to Battleship"));
+            Assert.assertTrue(systemOutRule.getLog().contains("Error"));
+        }
+    }
+
 }
