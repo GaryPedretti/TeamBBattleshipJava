@@ -3,6 +3,7 @@ package org.scrum.psd.battleship.controller.dto;
 public class Position {
     private Letter column;
     private int row;
+    private boolean isDamaged = false;
 
     public Position() {
         super();
@@ -31,6 +32,14 @@ public class Position {
         this.row = row;
     }
 
+    public boolean isDamaged() {
+        return this.isDamaged;
+    }
+
+    public void setDamaged(boolean isDamaged) {
+        this.isDamaged = isDamaged;
+    }
+
     @Override public boolean equals(Object o) {
         if(o instanceof Position) {
             Position position = (Position) o;
@@ -39,7 +48,9 @@ public class Position {
                 return false;
             }
 
-            return position.column.equals(column) && position.row == row;
+            return position.column.equals(column) 
+                && position.row == row 
+                && position.isDamaged == isDamaged;
         }
 
         return false;

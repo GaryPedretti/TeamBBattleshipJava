@@ -85,4 +85,29 @@ public class Ship {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public boolean isSunk() {
+        for (int i=0; i < positions.size(); i++) {
+            Position p =  positions.get(i);
+            if (!p.isDamaged()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int getDamageHits() {
+        int total = 0;
+        for (int i=0; i < positions.size(); i++) {
+            Position p =  positions.get(i);
+            if (p.isDamaged()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public String getStatus() {
+        return this.name + (this.isSunk() ? "(SUNK)" : "(" + getDamageHits() + ")");
+    }
 }

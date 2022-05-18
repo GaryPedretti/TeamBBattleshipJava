@@ -3,11 +3,13 @@ package org.scrum.psd.battleship.ascii;
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 import com.diogonunes.jcdp.color.api.Ansi.BColor;
+import com.diogonunes.jcdp.color.api.Ansi.FColor;
 
 import org.scrum.psd.battleship.controller.GameController;
 import org.scrum.psd.battleship.controller.dto.Letter;
 import org.scrum.psd.battleship.controller.dto.Position;
 import org.scrum.psd.battleship.controller.dto.Ship;
+import org.scrum.psd.battleship.controller.dto.ShotResult;
 
 import java.util.List;
 import java.util.Random;
@@ -62,6 +64,8 @@ public class Main {
 
         do {
             console.println("");
+            printFleetStatus(myFleet, "My   ");
+            printFleetStatus(enemyFleet, "Enemy");
             console.setForegroundColor(Ansi.FColor.CYAN);
             console.println("Player, it's your turn");
             console.println("");
@@ -79,9 +83,9 @@ public class Main {
             } while (validCoordinates == false);
             Position position = parsePosition(enteredCoordinates);
             console.println("Firing shot to coordinates: " + position.getColumn() + position.getRow());
-            boolean isHit = GameController.checkIsHit(enemyFleet, position);
+            ShotResult myShot = GameController.fireShot(enemyFleet, position);
             console.println("\t");
-            if (isHit) {
+            if (myShot.isHit()) {
                 beep();
                 console.println("                \\         .  ./");
                 console.println("              \\      .:\" \";'.:..\" \"   /");
@@ -95,6 +99,10 @@ public class Main {
                 console.setForegroundColor(Ansi.FColor.GREEN);
                 console.println("Yeah ! Nice hit !");
                 console.println("");
+                if (myShot.sunkShip()) {
+                    console.setForegroundColor(Ansi.FColor.RED);
+                    console.println("You sunk an enemy ship!");
+                }
             }
             else {
                 console.setForegroundColor(Ansi.FColor.RED);
@@ -106,12 +114,12 @@ public class Main {
             console.println("\t");
 
             position = getRandomPosition();
-            isHit = GameController.checkIsHit(myFleet, position);
+            ShotResult enemyShot = GameController.fireShot(myFleet, position);
             console.println("\t");
             console.setForegroundColor(Ansi.FColor.MAGENTA);
-            console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
+            console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), enemyShot.isHit() ? "hit your ship !" : "miss"));
             console.println("");
-            if (isHit) {
+            if (enemyShot.isHit()) {
                 beep();
 
                 console.println("                \\         .  ./");
@@ -122,6 +130,11 @@ public class Main {
                 console.println("            -   (\\- |  \\ /  |  /)  -");
                 console.println("                 -\\  \\     /  /-");
                 console.println("                   \\  \\   /  /");
+
+                if (enemyShot.sunkShip()) {
+                    console.setForegroundColor(Ansi.FColor.RED);
+                    console.println("The enemy sunk your ship!");
+                }
 
             }
             console.println("\t");
@@ -176,7 +189,6 @@ public class Main {
     private static void InitializeGame() {
         InitializeMyFleet();
         //DebugInitializeMyFleet();
-
         InitializeEnemyFleet();
     }
 
@@ -249,5 +261,16 @@ public class Main {
 
         enemyFleet.get(4).getPositions().add(new Position(Letter.C, 5));
         enemyFleet.get(4).getPositions().add(new Position(Letter.C, 6));
+    }
+
+    private static void printFleetStatus(List<Ship> fleet, String player) {
+        console.setForegroundColor(FColor.YELLOW);
+        console.print(player + " Fleet: ");
+        for (int i=0; i < fleet.size(); i++) {
+            Ship ship = fleet.get(i);
+
+            console.print(ship.getStatus() + " - ");
+        }
+        console.println("\t");
     }
 }
