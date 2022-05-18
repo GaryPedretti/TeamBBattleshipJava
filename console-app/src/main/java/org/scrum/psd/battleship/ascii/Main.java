@@ -67,8 +67,14 @@ public class Main {
             console.println("");
             console.println("Enter coordinates for your shot :");
             console.println("");
-            console.print("Firing shot to coordinates: ");
-            Position position = parsePosition(scanner.next());
+            Boolean validCoordinates = false;
+            String enteredCoordinates;
+            do {
+                console.print("Firing shot to coordinates: ");
+                enteredCoordinates = scanner.next();
+                validCoordinates = checkCoordinates(enteredCoordinates);
+            } while (validCoordinates == false);
+            Position position = parsePosition(enteredCoordinates);
             console.println("Firing shot to coordinates: " + position.getColumn() + position.getRow());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
             console.println("\t");
@@ -125,6 +131,10 @@ public class Main {
         console.print("\007");
     }
 
+    protected static Boolean checkCoordinates(String enteredCoordinates){
+        return true;
+    }
+
     protected static Position parsePosition(String input) {
         Position position = new Position();
         // check to see if letter is in bound
@@ -162,8 +172,8 @@ public class Main {
     }
 
     private static void InitializeGame() {
-        InitializeMyFleet();
-        // DebugInitializeMyFleet();
+        // InitializeMyFleet();
+        DebugInitializeMyFleet();
 
         InitializeEnemyFleet();
     }
