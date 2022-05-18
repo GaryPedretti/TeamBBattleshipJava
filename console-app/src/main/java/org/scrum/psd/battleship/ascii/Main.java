@@ -74,7 +74,7 @@ public class Main {
                 enteredCoordinates = scanner.next();
                 validCoordinates = checkCoordinates(enteredCoordinates);
                 if (validCoordinates == false) {
-                    console.println("Coordinatates entered are not valid, please try again.");
+                    console.println("Error: Coordinatates entered are not valid, please try again.");
                 }
             } while (validCoordinates == false);
             Position position = parsePosition(enteredCoordinates);
@@ -137,6 +137,13 @@ public class Main {
     protected static Boolean checkCoordinates(String enteredCoordinates){
         String strLetter = enteredCoordinates.toUpperCase().substring(0, 1);
         if (letterContains(strLetter) == false) { return false; }
+        try {
+            Integer.parseInt(enteredCoordinates.substring(1));
+        } catch(NumberFormatException e) {
+            return false;
+        } catch(NullPointerException e) {
+            return false;
+        }
         int number = Integer.parseInt(enteredCoordinates.substring(1));
         if (number < 1 || number > 8) { return false; }
         return true;
