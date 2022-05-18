@@ -74,7 +74,7 @@ public class Main {
                 enteredCoordinates = scanner.next();
                 validCoordinates = checkCoordinates(enteredCoordinates);
                 if (validCoordinates == false) {
-                    console.println("Error: Coordinatates entered are not valid, please try again.");
+                    console.println("Error: Coordinates entered are not valid, please try again.");
                 }
             } while (validCoordinates == false);
             Position position = parsePosition(enteredCoordinates);
@@ -175,7 +175,7 @@ public class Main {
 
     private static void InitializeGame() {
         InitializeMyFleet();
-        // DebugInitializeMyFleet();
+        //DebugInitializeMyFleet();
 
         InitializeEnemyFleet();
     }
