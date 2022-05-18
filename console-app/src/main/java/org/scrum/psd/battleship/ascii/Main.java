@@ -67,8 +67,17 @@ public class Main {
             console.println("");
             console.println("Enter coordinates for your shot :");
             console.println("");
-            console.print("Firing shot to coordinates: ");
-            Position position = parsePosition(scanner.next());
+            Boolean validCoordinates = false;
+            String enteredCoordinates;
+            do {
+                console.print("Firing shot to coordinates: ");
+                enteredCoordinates = scanner.next();
+                validCoordinates = checkCoordinates(enteredCoordinates);
+                if (validCoordinates == false) {
+                    console.println("Error: Coordinates entered are not valid, please try again.");
+                }
+            } while (validCoordinates == false);
+            Position position = parsePosition(enteredCoordinates);
             console.println("Firing shot to coordinates: " + position.getColumn() + position.getRow());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
             console.println("\t");
@@ -125,10 +134,33 @@ public class Main {
         console.print("\007");
     }
 
+    protected static Boolean checkCoordinates(String enteredCoordinates){
+        String strLetter = enteredCoordinates.toUpperCase().substring(0, 1);
+        if (letterContains(strLetter) == false) { return false; }
+        try {
+            Integer.parseInt(enteredCoordinates.substring(1));
+        } catch(NumberFormatException e) {
+            return false;
+        } catch(NullPointerException e) {
+            return false;
+        }
+        int number = Integer.parseInt(enteredCoordinates.substring(1));
+        if (number < 1 || number > 8) { return false; }
+        return true;
+    }
     protected static Position parsePosition(String input) {
         Letter letter = Letter.valueOf(input.toUpperCase().substring(0, 1));
         int number = Integer.parseInt(input.substring(1));
         return new Position(letter, number);
+    }
+
+    protected static boolean letterContains(String input) {
+        for (Letter l : Letter.values()) {
+            if (l.name().equals(input)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Position getRandomPosition() {
@@ -143,7 +175,7 @@ public class Main {
 
     private static void InitializeGame() {
         InitializeMyFleet();
-        // DebugInitializeMyFleet();
+        //DebugInitializeMyFleet();
 
         InitializeEnemyFleet();
     }
