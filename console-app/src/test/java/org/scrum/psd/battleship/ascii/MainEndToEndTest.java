@@ -19,6 +19,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotHits() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2",  //player ship placement
                 "b4");  //player shots
 
@@ -32,6 +33,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotMisses() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2",  //player ship placement
                 "e4"); //player shots
 
@@ -45,6 +47,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotOutOfBoundsX() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2",  //player ship placement
                 "m4"); //player shots
 
@@ -58,6 +61,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotOutOfBoundsY() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2",  //player ship placement
                 "b14"); //player shots
 
@@ -71,6 +75,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotInvalid() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2",  //player ship placement
                 "abc"); //player shots
 
@@ -84,6 +89,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotSinkShip1() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("b2", "b3", "b4", "b5", "b6", "d2", "d3", "d4", "d5", "f2", "f3", "f4", "b7", "c7", "d7", "f7", "g7",  //player ship placement
                 "b4", "b5", "b6", "b7", "b8" ); //player shots
 
@@ -99,6 +105,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotSinkShip2() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("b2", "b3", "b4", "b5", "b6", "d2", "d3", "d4", "d5", "f2", "f3", "f4", "b7", "c7", "d7", "f7", "g7",  //player ship placement
                 "e6", "e7", "e8", "e9" ); //player shots
 
@@ -114,6 +121,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotSinkShip3() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("b2", "b3", "b4", "b5", "b6", "d2", "d3", "d4", "d5", "f2", "f3", "f4", "b7", "c7", "d7", "f7", "g7",  //player ship placement
                 "a3", "b3", "c3" ); //player shots
 
@@ -129,6 +137,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotSinkShip4() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("b2", "b3", "b4", "b5", "b6", "d2", "d3", "d4", "d5", "f2", "f3", "f4", "b7", "c7", "d7", "f7", "g7",  //player ship placement
                 "f8", "g8", "h8" ); //player shots
 
@@ -144,6 +153,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotSinkShip5() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("b2", "b3", "b4", "b5", "b6", "d2", "d3", "d4", "d5", "f2", "f3", "f4", "b7", "c7", "d7", "f7", "g7",  //player ship placement
                 "c5", "c6" ); //player shots
 
@@ -159,6 +169,7 @@ public class MainEndToEndTest {
     @Test
     public void testPlayGameShotAllWater() {
         try {
+            systemOutRule.clearLog();
             gameInput.provideLines("b2", "b3", "b4", "b5", "b6", "d2", "d3", "d4", "d5", "f2", "f3", "f4", "b7", "c7", "d7", "f7", "g7",  //player ship placement
                 "a1", "a2",       "a4", "a5", "a6", "a7", "a8",  //player shots
                 "b1", "b2",  
