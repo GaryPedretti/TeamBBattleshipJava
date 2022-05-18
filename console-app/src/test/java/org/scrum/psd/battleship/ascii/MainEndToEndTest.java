@@ -114,7 +114,7 @@ public class MainEndToEndTest {
             Assert.assertTrue(systemOutRule.getLog().contains("Welcome to Battleship"));
             Assert.assertFalse(systemOutRule.getLog().contains("Miss !"));
             Assert.assertTrue(systemOutRule.getLog().contains("Yeah ! Nice hit !"));
-            Assert.assertTrue(systemOutRule.getLog().contains("You sunk an enamy ship!"));
+            Assert.assertTrue(systemOutRule.getLog().contains("You sunk an enemy ship!"));
         }
     }
 
