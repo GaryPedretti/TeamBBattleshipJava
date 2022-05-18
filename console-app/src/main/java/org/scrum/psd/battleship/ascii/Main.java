@@ -174,8 +174,8 @@ public class Main {
     }
 
     private static void InitializeGame() {
-        // InitializeMyFleet();
-        DebugInitializeMyFleet();
+        InitializeMyFleet();
+        // DebugInitializeMyFleet();
 
         InitializeEnemyFleet();
     }
