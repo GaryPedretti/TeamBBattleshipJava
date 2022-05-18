@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.scrum.psd.battleship.controller.dto.Letter;
 import org.scrum.psd.battleship.controller.dto.Position;
 import org.scrum.psd.battleship.controller.dto.Ship;
+import org.scrum.psd.battleship.controller.dto.ShotResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -76,6 +77,53 @@ public class GameControllerTest {
         boolean result = GameController.isShipValid(ship);
 
         Assert.assertTrue(result);
+    }
+
+
+
+
+
+
+
+
+    @Test
+    public void testFireShotHits() {
+        List<Ship> ships = GameController.initializeShips();
+        int counter = 0;
+
+        for (Ship ship : ships) {
+            Letter letter = Letter.values()[counter];
+
+            for (int i = 0; i < ship.getSize(); i++) {
+                ship.getPositions().add(new Position(letter, i));
+            }
+
+            counter++;
+        }
+
+        ShotResult result = GameController.fireShot(ships, new Position(Letter.A, 1));
+
+        Assert.assertTrue(result.isHit());
+    }
+
+    @Test
+    public void testFireShotMisses() {
+        List<Ship> ships = GameController.initializeShips();
+        int counter = 0;
+
+        for (Ship ship : ships) {
+            Letter letter = Letter.values()[counter];
+
+            for (int i = 0; i < ship.getSize(); i++) {
+                ship.getPositions().add(new Position(letter, i));
+            }
+
+            counter++;
+        }
+
+        ShotResult result = GameController.fireShot(ships, new Position(Letter.H, 1));
+
+        Assert.assertFalse(result.isHit());
     }
 
 }
