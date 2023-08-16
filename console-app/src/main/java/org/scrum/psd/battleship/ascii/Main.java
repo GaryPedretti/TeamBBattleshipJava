@@ -75,12 +75,29 @@ public class Main {
                 console.println("                   \\  \\   /  /");
             }
 
-            console.println(isHit ? "Yeah ! Nice hit !" : "Miss");
+            
+            if (isHit) {
+                console.setForegroundColor(Ansi.FColor.RED);
+                console.println("Yeah ! Nice hit !");    
+            } else {
+                console.setForegroundColor(Ansi.FColor.BLUE);
+                console.println("Miss");    
+            }
+            console.setForegroundColor(Ansi.FColor.WHITE);
+            console.println("");
 
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
             console.println("");
+            
+            if (isHit) {
+                console.setForegroundColor(Ansi.FColor.RED);
+            } else {
+                console.setForegroundColor(Ansi.FColor.BLUE);
+            }
             console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
+            console.setForegroundColor(Ansi.FColor.WHITE);
+
             if (isHit) {
                 beep();
 
@@ -94,6 +111,7 @@ public class Main {
                 console.println("                   \\  \\   /  /");
 
             }
+            console.println("");
         } while (true);
     }
 
