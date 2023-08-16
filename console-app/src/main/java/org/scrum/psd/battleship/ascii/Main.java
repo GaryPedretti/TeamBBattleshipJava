@@ -84,11 +84,11 @@ public class Main {
                 console.println("Miss");    
             }
             console.setForegroundColor(Ansi.FColor.WHITE);
-            console.println("");
+            console.println(" ");
 
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
-            console.println("");
+            console.println(" ");
             
             if (isHit) {
                 console.setForegroundColor(Ansi.FColor.RED);
@@ -111,7 +111,8 @@ public class Main {
                 console.println("                   \\  \\   /  /");
 
             }
-            console.println("");
+            console.println(" ");
+            console.println(" ");
         } while (true);
     }
 
@@ -136,14 +137,22 @@ public class Main {
     }
 
     private static void InitializeGame() {
-        InitializeMyFleet();
+        InitializeMyFleet(true);
 
-        InitializeEnemyFleet();
+        enemyFleet = GameController.initializeShips();
+        InitializeFleet(enemyFleet);
     }
 
-    private static void InitializeMyFleet() {
-        Scanner scanner = new Scanner(System.in);
+    private static void InitializeMyFleet(boolean test) {
         myFleet = GameController.initializeShips();
+        if (test) {
+            InitializeFleet(myFleet);
+            return;
+        }
+
+
+        Scanner scanner = new Scanner(System.in);
+        
 
         console.println("Please position your fleet (Game board has size from A to H and 1 to 8) :");
 
@@ -159,29 +168,28 @@ public class Main {
         }
     }
 
-    private static void InitializeEnemyFleet() {
-        enemyFleet = GameController.initializeShips();
+    private static void InitializeFleet(List<Ship> fleet) {
 
-        enemyFleet.get(0).getPositions().add(new Position(Letter.B, 4));
-        enemyFleet.get(0).getPositions().add(new Position(Letter.B, 5));
-        enemyFleet.get(0).getPositions().add(new Position(Letter.B, 6));
-        enemyFleet.get(0).getPositions().add(new Position(Letter.B, 7));
-        enemyFleet.get(0).getPositions().add(new Position(Letter.B, 8));
+        fleet.get(0).getPositions().add(new Position(Letter.B, 4));
+        fleet.get(0).getPositions().add(new Position(Letter.B, 5));
+        fleet.get(0).getPositions().add(new Position(Letter.B, 6));
+        fleet.get(0).getPositions().add(new Position(Letter.B, 7));
+        fleet.get(0).getPositions().add(new Position(Letter.B, 8));
 
-        enemyFleet.get(1).getPositions().add(new Position(Letter.E, 6));
-        enemyFleet.get(1).getPositions().add(new Position(Letter.E, 7));
-        enemyFleet.get(1).getPositions().add(new Position(Letter.E, 8));
-        enemyFleet.get(1).getPositions().add(new Position(Letter.E, 9));
+        fleet.get(1).getPositions().add(new Position(Letter.E, 6));
+        fleet.get(1).getPositions().add(new Position(Letter.E, 7));
+        fleet.get(1).getPositions().add(new Position(Letter.E, 8));
+        fleet.get(1).getPositions().add(new Position(Letter.E, 9));
 
-        enemyFleet.get(2).getPositions().add(new Position(Letter.A, 3));
-        enemyFleet.get(2).getPositions().add(new Position(Letter.B, 3));
-        enemyFleet.get(2).getPositions().add(new Position(Letter.C, 3));
+        fleet.get(2).getPositions().add(new Position(Letter.A, 3));
+        fleet.get(2).getPositions().add(new Position(Letter.B, 3));
+        fleet.get(2).getPositions().add(new Position(Letter.C, 3));
 
-        enemyFleet.get(3).getPositions().add(new Position(Letter.F, 8));
-        enemyFleet.get(3).getPositions().add(new Position(Letter.G, 8));
-        enemyFleet.get(3).getPositions().add(new Position(Letter.H, 8));
+        fleet.get(3).getPositions().add(new Position(Letter.F, 8));
+        fleet.get(3).getPositions().add(new Position(Letter.G, 8));
+        fleet.get(3).getPositions().add(new Position(Letter.H, 8));
 
-        enemyFleet.get(4).getPositions().add(new Position(Letter.C, 5));
-        enemyFleet.get(4).getPositions().add(new Position(Letter.C, 6));
+        fleet.get(4).getPositions().add(new Position(Letter.C, 5));
+        fleet.get(4).getPositions().add(new Position(Letter.C, 6));
     }
 }

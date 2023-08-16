@@ -31,6 +31,8 @@ public class GameController {
         return false;
     }
 
+
+
     public static List<Ship> initializeShips() {
         return Arrays.asList(
                 new Ship("Aircraft Carrier", 5, Color.CADET_BLUE),
