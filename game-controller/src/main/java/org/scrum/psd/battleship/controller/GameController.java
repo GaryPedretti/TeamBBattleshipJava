@@ -23,6 +23,8 @@ public class GameController {
         for (Ship ship : ships) {
             for (Position position : ship.getPositions()) {
                 if (position.equals(shot)) {
+                    
+                    position.setHit(true);
                     return true;
                 }
             }
@@ -44,6 +46,21 @@ public class GameController {
 
     public static boolean isShipValid(Ship ship) {
         return ship.getPositions().size() == ship.getSize();
+    }
+
+    public static boolean isShipSunk(List<Ship> ships, String name) {
+        
+        for (Ship ship : ships) {
+            if(ship.getName().equals(name)) {
+                for (Position position : ship.getPositions()) {
+                    if (!position.isHit()) {
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        return true;
     }
 
     public static Position getRandomPosition(int size) {

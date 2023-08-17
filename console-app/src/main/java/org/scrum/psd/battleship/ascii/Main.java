@@ -73,12 +73,13 @@ public class Main {
                 console.println("            -   (\\- |  \\ /  |  /)  -");
                 console.println("                 -\\  \\     /  /-");
                 console.println("                   \\  \\   /  /");
-            }
-
-            
-            if (isHit) {
                 console.setForegroundColor(Ansi.FColor.RED);
                 console.println("Yeah ! Nice hit !");    
+                for (Ship ship: enemyFleet) {
+                    if(GameController.isShipSunk(enemyFleet, ship.getName())) {
+                        console.println(String.format("You sunk a %s", ship.getName()));    
+                    }
+                }
             } else {
                 console.setForegroundColor(Ansi.FColor.BLUE);
                 console.println("Miss");    
@@ -109,7 +110,11 @@ public class Main {
                 console.println("            -   (\\- |  \\ /  |  /)  -");
                 console.println("                 -\\  \\     /  /-");
                 console.println("                   \\  \\   /  /");
-
+                for (Ship ship: myFleet) {
+                    if(GameController.isShipSunk(myFleet, ship.getName())) {
+                        console.println(String.format("The computer sunk a %s", ship.getName()));    
+                    }
+                }
             }
             console.println(" ");
             console.println(" ");

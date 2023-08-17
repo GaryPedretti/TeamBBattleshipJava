@@ -3,6 +3,7 @@ package org.scrum.psd.battleship.controller.dto;
 public class Position {
     private Letter column;
     private int row;
+    private boolean hit;
 
     public Position() {
         super();
@@ -29,6 +30,14 @@ public class Position {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public boolean isHit() {
+        return hit;
+    }
+
+    public void setHit(boolean hit) {
+        this.hit = hit;
     }
 
     @Override public boolean equals(Object o) {
